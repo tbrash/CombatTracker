@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CTCampaign" representedClassName="CTCampaign" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="charachters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CTCampaign" syncable="YES"/>
+    </entity>
+    <entity name="CTCharachter" representedClassName="CTCharachter" syncable="YES">
+        <attribute name="cER" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cFate" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="cFP" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="cHP" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="luck" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="manuver" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mER" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mFate" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="mFP" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="mHP" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posture" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="shock" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stun" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="campaign" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="CTCampaign" inverseName="charachters" inverseEntity="CTCampaign" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CTCharachter" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CTCampaign" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
