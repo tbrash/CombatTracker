@@ -14,13 +14,17 @@
 		0663C3A718A9B967001311C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3A618A9B967001311C3 /* main.m */; };
 		0663C3AB18A9B967001311C3 /* CTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3AA18A9B967001311C3 /* CTAppDelegate.m */; };
 		0663C3AE18A9B967001311C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663C3AC18A9B967001311C3 /* Main.storyboard */; };
-		0663C3B118A9B967001311C3 /* CTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3B018A9B967001311C3 /* CTViewController.m */; };
 		0663C3B318A9B967001311C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0663C3B218A9B967001311C3 /* Images.xcassets */; };
 		0663C3BA18A9B967001311C3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663C3B918A9B967001311C3 /* XCTest.framework */; };
 		0663C3BB18A9B967001311C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663C39A18A9B966001311C3 /* Foundation.framework */; };
 		0663C3BC18A9B967001311C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0663C39E18A9B966001311C3 /* UIKit.framework */; };
 		0663C3C418A9B967001311C3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0663C3C218A9B967001311C3 /* InfoPlist.strings */; };
 		0663C3C618A9B967001311C3 /* CombatTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3C518A9B967001311C3 /* CombatTrackerTests.m */; };
+		0663C3D118AAF23E001311C3 /* CTModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3CF18AAF23E001311C3 /* CTModel.xcdatamodeld */; };
+		0663C3D418AB00C1001311C3 /* CTCampaign.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3D318AB00C1001311C3 /* CTCampaign.m */; };
+		0663C3D718AB00C2001311C3 /* CTCharachter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3D618AB00C2001311C3 /* CTCharachter.m */; };
+		0663C3DA18AB02B0001311C3 /* CTCampaignTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */; };
+		0663C3DD18AB103D001311C3 /* CTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3DC18AB103D001311C3 /* CTDataModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +49,21 @@
 		0663C3A918A9B967001311C3 /* CTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTAppDelegate.h; sourceTree = "<group>"; };
 		0663C3AA18A9B967001311C3 /* CTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTAppDelegate.m; sourceTree = "<group>"; };
 		0663C3AD18A9B967001311C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0663C3AF18A9B967001311C3 /* CTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTViewController.h; sourceTree = "<group>"; };
-		0663C3B018A9B967001311C3 /* CTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTViewController.m; sourceTree = "<group>"; };
 		0663C3B218A9B967001311C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0663C3B818A9B967001311C3 /* CombatTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CombatTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663C3B918A9B967001311C3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0663C3C118A9B967001311C3 /* CombatTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CombatTrackerTests-Info.plist"; sourceTree = "<group>"; };
 		0663C3C318A9B967001311C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0663C3C518A9B967001311C3 /* CombatTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CombatTrackerTests.m; sourceTree = "<group>"; };
+		0663C3D018AAF23E001311C3 /* CTModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CTModel.xcdatamodel; sourceTree = "<group>"; };
+		0663C3D218AB00C1001311C3 /* CTCampaign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCampaign.h; sourceTree = "<group>"; };
+		0663C3D318AB00C1001311C3 /* CTCampaign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCampaign.m; sourceTree = "<group>"; };
+		0663C3D518AB00C2001311C3 /* CTCharachter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCharachter.h; sourceTree = "<group>"; };
+		0663C3D618AB00C2001311C3 /* CTCharachter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCharachter.m; sourceTree = "<group>"; };
+		0663C3D818AB02B0001311C3 /* CTCampaignTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCampaignTableViewController.h; sourceTree = "<group>"; };
+		0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCampaignTableViewController.m; sourceTree = "<group>"; };
+		0663C3DB18AB103D001311C3 /* CTDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataModel.h; sourceTree = "<group>"; };
+		0663C3DC18AB103D001311C3 /* CTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +126,17 @@
 				0663C3A918A9B967001311C3 /* CTAppDelegate.h */,
 				0663C3AA18A9B967001311C3 /* CTAppDelegate.m */,
 				0663C3AC18A9B967001311C3 /* Main.storyboard */,
-				0663C3AF18A9B967001311C3 /* CTViewController.h */,
-				0663C3B018A9B967001311C3 /* CTViewController.m */,
 				0663C3B218A9B967001311C3 /* Images.xcassets */,
 				0663C3A118A9B966001311C3 /* Supporting Files */,
+				0663C3CF18AAF23E001311C3 /* CTModel.xcdatamodeld */,
+				0663C3D518AB00C2001311C3 /* CTCharachter.h */,
+				0663C3D618AB00C2001311C3 /* CTCharachter.m */,
+				0663C3D218AB00C1001311C3 /* CTCampaign.h */,
+				0663C3D318AB00C1001311C3 /* CTCampaign.m */,
+				0663C3D818AB02B0001311C3 /* CTCampaignTableViewController.h */,
+				0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */,
+				0663C3DB18AB103D001311C3 /* CTDataModel.h */,
+				0663C3DC18AB103D001311C3 /* CTDataModel.m */,
 			);
 			path = CombatTracker;
 			sourceTree = "<group>";
@@ -250,9 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0663C3D118AAF23E001311C3 /* CTModel.xcdatamodeld in Sources */,
+				0663C3D718AB00C2001311C3 /* CTCharachter.m in Sources */,
+				0663C3DD18AB103D001311C3 /* CTDataModel.m in Sources */,
+				0663C3DA18AB02B0001311C3 /* CTCampaignTableViewController.m in Sources */,
 				0663C3A718A9B967001311C3 /* main.m in Sources */,
 				0663C3AB18A9B967001311C3 /* CTAppDelegate.m in Sources */,
-				0663C3B118A9B967001311C3 /* CTViewController.m in Sources */,
+				0663C3D418AB00C1001311C3 /* CTCampaign.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +495,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0663C3CF18AAF23E001311C3 /* CTModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0663C3D018AAF23E001311C3 /* CTModel.xcdatamodel */,
+			);
+			currentVersion = 0663C3D018AAF23E001311C3 /* CTModel.xcdatamodel */;
+			path = CTModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0663C38F18A9B966001311C3 /* Project object */;
 }
