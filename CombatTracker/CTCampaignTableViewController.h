@@ -9,16 +9,23 @@
 #import <UIKit/UIKit.h>
 
 @class NSFetchedResultsController;
+@class CTCampaign;
+
+@interface CTCampaignCell : UITableViewCell<UITextFieldDelegate>
+
+@property (strong, nonatomic) CTCampaign* camp;
+
+@property (weak, nonatomic) IBOutlet UITextField *name;
+- (IBAction)nameChanged:(UITextField*)sender;
+
+@end
 
 @interface CTCampaignTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSOrderedSet*  campaigns;
 @property (strong, nonatomic) NSFetchedResultsController*  controller;
 
+@property (weak, nonatomic) CTCampaignCell* curentlyEditing;
+
 
 @end
 
-
-@interface CTCampaignCell : UITableViewCell
-
-@end

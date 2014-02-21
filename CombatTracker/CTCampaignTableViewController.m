@@ -10,13 +10,49 @@
 #import <CoreData/CoreData.h>
 #import "CTDataModel.h"
 #import "CTCampaign.h"
+#import "CTAppDelegate.h"
 
 
-@interface CTCampaignTableViewController ()
+@implementation CTCampaignCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    self.name.borderStyle = UITextBorderStyleNone;
+    
+    self.name.enabled = NO;
+    
+    self.name.delegate = self;
+    
+    return self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)nameChanged:(UITextField*)sender {
+    sender.enabled = NO;
+    self.camp.name = sender.text;
+    NSError* error;
+    if (![[CTDataModel sharedInstance].context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+}
+
+
 
 @end
 
+@interface CTCampaignTableViewController ()
+@end
+
+
 @implementation CTCampaignTableViewController
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,12 +69,9 @@
 
     if(_controller == nil)
     {
-        CTCampaign *camp = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"CTCampaign"
-                            inManagedObjectContext:[CTDataModel sharedInstance].context];
-        camp.name = @"Shards";
         
-        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"campaignCell"];
+        
+      //  [self.tableView registerClass:[CTCampaignCell class] forCellReuseIdentifier:@"campaignCell"];
         
       //  [[CTDataModel sharedInstance].context save:nil];
 
@@ -54,10 +87,11 @@
                            managedObjectContext:[CTDataModel sharedInstance].context
                            sectionNameKeyPath:nil
                            cacheName:nil];
-        
-        NSError *error;
-        BOOL success = [_controller performFetch:&error];
-        
+        NSError* error;
+        // Save the object to persistent store
+        if (![self.controller performFetch:&error]) {
+            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+        }
         
         
     }
@@ -72,15 +106,33 @@
     //self.editButtonItem.action
 }
 
+
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
     id <NSFetchedResultsSectionInfo> sectionInfo = [[_controller sections] objectAtIndex:0];
 
     if(editing == YES)
+    {
+        if([[_controller sections] count]==0)
+        {
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        }
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[sectionInfo numberOfObjects] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
     else
+    {
+        if(self.curentlyEditing)
+            [self.curentlyEditing nameChanged:self.curentlyEditing.name] ;
+
         [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[sectionInfo numberOfObjects] inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        if([[_controller sections] count]==0)
+        {
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,7 +146,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [[_controller sections] count];
+    NSUInteger count = [[_controller sections] count];
+    if(count == 0 && [self isEditing])
+        count++;
+    return count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,19 +158,23 @@
     if ([[_controller sections] count] > 0) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[_controller sections] objectAtIndex:section];
         NSUInteger count = [sectionInfo numberOfObjects];
-        if([tableView isEditing])
+        if([self isEditing])
         {
             count++;
         }
         return count;
-    } else
+    } else if([self isEditing])
+    {
+        return 1;
+    }else{
         return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"campaignCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CTCampaignCell *cell = (CTCampaignCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell with data from the managed object.
     if ([[_controller sections] count] > indexPath.section)
@@ -126,10 +185,16 @@
         {
             CTCampaign *managedObject = [_controller objectAtIndexPath:indexPath];
 
-            cell.textLabel.text = managedObject.name;
+            cell.name.text = managedObject.name;
+            cell.camp = managedObject;
+            cell.name.enabled = NO;
+
         }else
         {
-            cell.textLabel.text = @"New Campaign";
+            cell.name.text = @"Create Campaign";
+            cell.camp = nil;
+            cell.name.enabled = NO;
+
         }
     }
 
@@ -155,9 +220,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        CTCampaign *managedObject = [_controller objectAtIndexPath:indexPath];
+        [self deleteCampaign:managedObject];
         // Delete the row from the data source
+        //[self.controller.managedObjectContext deleteObject:managedObject];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
@@ -166,9 +235,66 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[_controller sections] objectAtIndex:indexPath.section];
+    if ([tableView isEditing]) {
+        NSUInteger count = [sectionInfo numberOfObjects];
+        if(count == indexPath.row)
+        {
+            [self newCampaign];
+        }else{
+            CTCampaignCell* cell = (CTCampaignCell*)[tableView cellForRowAtIndexPath:indexPath];
+            self.curentlyEditing = cell;
+            cell.name.enabled = YES;
+            [cell.name becomeFirstResponder];
+        }
+
+    }else
+    {
+        CTCampaign *managedObject = [_controller objectAtIndexPath:indexPath];\
+        [self loadCampaign:managedObject];
+
+    }
+}
+
+-(void)newCampaign
+{
+    CTCampaign *camp = [NSEntityDescription
+                        insertNewObjectForEntityForName:@"CTCampaign"
+                        inManagedObjectContext:[CTDataModel sharedInstance].context];
+    camp.name = @"New Campaign";
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![[CTDataModel sharedInstance].context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    if (![self.controller performFetch:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    [self.tableView insertRowsAtIndexPaths:@[[self.controller indexPathForObject:camp]] withRowAnimation:UITableViewRowAnimationFade];
     
 }
 
+-(void)loadCampaign:(CTCampaign*)campaign
+{
+    
+    [self.navigationController pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>
+    
+}
+
+-(void)deleteCampaign:(CTCampaign*)campaign
+{
+    [_controller.managedObjectContext deleteObject:campaign];
+    NSError *error;
+    if (![_controller.managedObjectContext save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    if (![self.controller performFetch:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    //[self.tableView setNeedsDisplay];
+    
+}
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath

@@ -14,22 +14,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="campaignCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="campaignCell" textLabel="Uil-mT-Vpf" style="IBUITableViewCellStyleDefault" id="UnV-g4-5Nm">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="campaignCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="campaignCell" id="UnV-g4-5Nm" customClass="CTCampaignCell">
                                 <rect key="frame" x="0.0" y="86" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UnV-g4-5Nm" id="Gv0-HO-64U">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UnV-g4-5Nm" id="Gv0-HO-64U">
+                                    <rect key="frame" x="0.0" y="0.0" width="991" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uil-mT-Vpf">
-                                            <rect key="frame" x="15" y="0.0" width="994" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fac-8B-PBE">
+                                            <rect key="frame" x="20" y="7" width="951" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" returnKeyType="done"/>
+                                            <connections>
+                                                <action selector="nameChanged:" destination="UnV-g4-5Nm" eventType="editingDidEndOnExit" id="Aar-gw-hC6"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="fac-8B-PBE" id="Jah-Dz-Jvz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -37,7 +42,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KC-YQ-IkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="846" y="-218"/>
+            <point key="canvasLocation" x="934" y="-98"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="x31-Og-B0o">
