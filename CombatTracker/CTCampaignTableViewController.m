@@ -11,6 +11,7 @@
 #import "CTDataModel.h"
 #import "CTCampaign.h"
 #import "CTAppDelegate.h"
+#import "CTCombatViewController.h"
 
 
 @implementation CTCampaignCell
@@ -277,9 +278,8 @@
 
 -(void)loadCampaign:(CTCampaign*)campaign
 {
-    
-    [self.navigationController pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>
-    
+    CTCombatViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"combatList"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 -(void)deleteCampaign:(CTCampaign*)campaign

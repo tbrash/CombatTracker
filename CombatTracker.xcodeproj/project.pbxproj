@@ -25,7 +25,7 @@
 		0663C3D718AB00C2001311C3 /* CTCharachter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3D618AB00C2001311C3 /* CTCharachter.m */; };
 		0663C3DA18AB02B0001311C3 /* CTCampaignTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */; };
 		0663C3DD18AB103D001311C3 /* CTDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0663C3DC18AB103D001311C3 /* CTDataModel.m */; };
-		06BA98DD18B6F7FD00C2A319 /* CTCharachterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA98DC18B6F7FD00C2A319 /* CTCharachterViewController.m */; };
+		06BA98DD18B6F7FD00C2A319 /* CTCombatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BA98DC18B6F7FD00C2A319 /* CTCombatViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,8 @@
 		0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCampaignTableViewController.m; sourceTree = "<group>"; };
 		0663C3DB18AB103D001311C3 /* CTDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDataModel.h; sourceTree = "<group>"; };
 		0663C3DC18AB103D001311C3 /* CTDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDataModel.m; sourceTree = "<group>"; };
-		06BA98DB18B6F7FD00C2A319 /* CTCharachterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCharachterViewController.h; sourceTree = "<group>"; };
-		06BA98DC18B6F7FD00C2A319 /* CTCharachterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCharachterViewController.m; sourceTree = "<group>"; };
+		06BA98DB18B6F7FD00C2A319 /* CTCombatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCombatViewController.h; sourceTree = "<group>"; };
+		06BA98DC18B6F7FD00C2A319 /* CTCombatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCombatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +140,8 @@
 				0663C3D918AB02B0001311C3 /* CTCampaignTableViewController.m */,
 				0663C3DB18AB103D001311C3 /* CTDataModel.h */,
 				0663C3DC18AB103D001311C3 /* CTDataModel.m */,
-				06BA98DB18B6F7FD00C2A319 /* CTCharachterViewController.h */,
-				06BA98DC18B6F7FD00C2A319 /* CTCharachterViewController.m */,
+				06BA98DB18B6F7FD00C2A319 /* CTCombatViewController.h */,
+				06BA98DC18B6F7FD00C2A319 /* CTCombatViewController.m */,
 			);
 			path = CombatTracker;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			files = (
 				0663C3D118AAF23E001311C3 /* CTModel.xcdatamodeld in Sources */,
 				0663C3D718AB00C2001311C3 /* CTCharachter.m in Sources */,
-				06BA98DD18B6F7FD00C2A319 /* CTCharachterViewController.m in Sources */,
+				06BA98DD18B6F7FD00C2A319 /* CTCombatViewController.m in Sources */,
 				0663C3DD18AB103D001311C3 /* CTDataModel.m in Sources */,
 				0663C3DA18AB02B0001311C3 /* CTCampaignTableViewController.m in Sources */,
 				0663C3A718A9B967001311C3 /* main.m in Sources */,
