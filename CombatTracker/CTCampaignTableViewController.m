@@ -279,6 +279,7 @@
 -(void)loadCampaign:(CTCampaign*)campaign
 {
     CTCombatViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"combatList"];
+    controller.camp = campaign;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

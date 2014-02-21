@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class CTCampaign;
 @interface CTCombatViewController : UICollectionViewController
+
+- (IBAction)nextCharachter:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+
+@property (strong, nonatomic) CTCampaign* camp;
 
 @end

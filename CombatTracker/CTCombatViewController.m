@@ -1,5 +1,5 @@
 //
-//  CTCharachterViewController.m
+//  CTCombatViewController.h
 //  CombatTracker
 //
 //  Created by Altus on 2/20/14.
@@ -35,4 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)nextCharachter:(id)sender {
+}
 @end
